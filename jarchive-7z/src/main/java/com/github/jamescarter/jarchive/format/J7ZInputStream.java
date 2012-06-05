@@ -41,6 +41,7 @@ public class J7ZInputStream extends JInputStream {
 		}
 
 		SevenZipEntry sze = archive.getEntry(fileIndex);
+		String name = sze.getName() + (sze.isDirectory() ? "/" : "");
 		int[] arrays = { fileIndex };
 		archive.Extract(arrays, 1, IInArchive.NExtract_NAskMode_kExtract, callback);
 
@@ -48,7 +49,7 @@ public class J7ZInputStream extends JInputStream {
 
 		++fileIndex;
 
-		return new JFile(sze.getName(), sze.getCompressedSize(), sze.getSize(), sze.isDirectory());
+		return new JFile(name, sze.getCompressedSize(), sze.getSize(), sze.isDirectory());
 	}
 
 }

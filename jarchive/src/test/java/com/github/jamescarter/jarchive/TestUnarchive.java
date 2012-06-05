@@ -17,10 +17,11 @@ public class TestUnarchive {
 		"test.tar.xz",
 		"test.tar.gz",
 		"test.tar.bz2",
-		//"test.zip",
-		//"test.7z",
+		"test.zip",
+		"test.7z",
 		"test.tar",
-		"test.rar"
+		"test.rar",
+		"combined.7z"
 	};
 	private static final ArrayList<String> validFileList = new ArrayList<String>();
 	private static String lipsum1Contents;
@@ -28,8 +29,6 @@ public class TestUnarchive {
 
 	@Before
 	public void setUp() throws Exception {
-		System.out.println("SETTING UP: " + new File(".").getAbsolutePath());
-		
 		validFileList.add("foldera/");
 		validFileList.add("foldera/folderb/");
 		validFileList.add("foldera/folderb/lipsum2.txt");
@@ -50,20 +49,31 @@ public class TestUnarchive {
 
 	private void genericOutput(JInputStream is) throws IOException {
 		JFile entry;
+		int entryCounter = 0;
 
 		while((entry = is.getNextEntry()) != null) {
+			++entryCounter;
+
+			if (entry.isArchive()) {
+				genericOutput(
+					JArchive.getJInputStream(entry, is)
+				);
+
+				continue;
+			}
+
+			// Make sure we're seeing an expected file
 			assertTrue(entry.getName(), validFileList.contains(entry.getName()));
 
 			if (entry.getName().equals("foldera/lipsum1.txt")) {
-				assertTrue(lipsum1Contents.length() + " != " + is.available(), lipsum1Contents.length() == is.available());
-
 				assertTrue(lipsum1Contents.equals(readFile(is)));
 			} else if (entry.getName().equals("foldera/folderb/lipsum2.txt")) {
-				assertTrue(lipsum2Contents.length() + " != " + is.available(), lipsum2Contents.length() == is.available());
-
 				assertTrue(lipsum2Contents.equals(readFile(is)));
 			}
 		}
+
+		// Ensure at least four entries were processed
+		assertTrue(entryCounter + " >= 4", entryCounter >= 4);
 	}
 
 	private static String readFile(String path) throws IOException {
@@ -77,7 +87,7 @@ public class TestUnarchive {
 	}
 
 	private static String readFile(InputStream is) throws IOException {
-		byte[] b = new byte[is.available()];
+		byte[] b = new byte[10240];
 		int len = b.length;
 		int total = 0;
 
