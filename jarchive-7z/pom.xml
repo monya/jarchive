@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github.jamescarter</groupId>
+        <artifactId>core</artifactId>
+        <version>0.1</version>
+    </parent>
+
+    <artifactId>jarchive-7z</artifactId>
+    <packaging>jar</packaging>
+
+    <name>7z</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.jamescarter</groupId>
+            <artifactId>jarchive</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
+
+    <licenses>
+        <license>
+            <name>GNU LESSER GENERAL PUBLIC LICENSE 2.1</name>
+            <url>http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt</url>
+        </license>
+    </licenses>
+</project>

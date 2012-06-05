@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.github.jamescarter</groupId>
+    <artifactId>core</artifactId>
+    <version>0.1</version>
+  </parent>
+    
+  <artifactId>dist</artifactId>
+
+  <packaging>pom</packaging>
+
+  <name>dist</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.github.jamescarter</groupId>
+      <artifactId>jarchive</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.github.jamescarter</groupId>
+      <artifactId>jarchive-7z</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.github.jamescarter</groupId>
+      <artifactId>jarchive-rar</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.github.jamescarter</groupId>
+      <artifactId>jarchive-tar</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.github.jamescarter</groupId>
+      <artifactId>jarchive-tar-bzip</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.github.jamescarter</groupId>
+      <artifactId>jarchive-tar-gzip</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.github.jamescarter</groupId>
+      <artifactId>jarchive-tar-xz</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.github.jamescarter</groupId>
+      <artifactId>jarchive-zip</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>distro-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <descriptors>
+                <descriptor>src/assemble/bin.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

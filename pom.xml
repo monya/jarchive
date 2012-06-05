@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.github.jamescarter</groupId>
+  <artifactId>core</artifactId>
+  <version>0.1</version>
+  <packaging>pom</packaging>
+
+  <name>core</name>
+  <url>http://jamescarter.github.com</url>
+
+  <modules>
+    <module>jarchive</module>
+    <module>jarchive-7z</module>
+    <module>jarchive-rar</module>
+    <module>jarchive-tar</module>
+    <module>jarchive-tar-bzip</module>
+    <module>jarchive-tar-gzip</module>
+    <module>jarchive-tar-xz</module>
+    <module>jarchive-zip</module>
+    <module>dist</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+</project>

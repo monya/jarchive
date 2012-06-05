@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="classes/7z" path="jarchive-7z/src/main/java"/>
+	<classpathentry kind="src" output="classes/7z" path="jarchive-7z/src/main/resources"/>
+	<classpathentry kind="src" output="classes/7z" path="jarchive-7z/src/test/java"/>
+
+	<classpathentry kind="src" output="classes/rar" path="jarchive-rar/src/main/java"/>
+	<classpathentry kind="src" output="classes/rar" path="jarchive-rar/src/main/resources"/>
+	<classpathentry kind="src" output="classes/rar" path="jarchive-rar/src/test/java"/>
+
+	<classpathentry kind="src" output="classes/tar" path="jarchive-tar/src/main/java"/>
+	<classpathentry kind="src" output="classes/tar" path="jarchive-tar/src/main/resources"/>
+	<classpathentry kind="src" output="classes/tar" path="jarchive-tar/src/test/java"/>
+
+	<classpathentry kind="src" output="classes/bzip" path="jarchive-tar-bzip/src/main/java"/>
+	<classpathentry kind="src" output="classes/bzip" path="jarchive-tar-bzip/src/main/resources"/>
+	<classpathentry kind="src" output="classes/bzip" path="jarchive-tar-bzip/src/test/java"/>
+
+	<classpathentry kind="src" output="classes/gzip" path="jarchive-tar-gzip/src/main/java"/>
+	<classpathentry kind="src" output="classes/gzip" path="jarchive-tar-gzip/src/main/resources"/>
+	<classpathentry kind="src" output="classes/gzip" path="jarchive-tar-gzip/src/test/java"/>
+
+	<classpathentry kind="src" output="classes/xz" path="jarchive-tar-xz/src/main/java"/>
+	<classpathentry kind="src" output="classes/xz" path="jarchive-tar-xz/src/main/resources"/>
+	<classpathentry kind="src" output="classes/xz" path="jarchive-tar-xz/src/test/java"/>
+
+	<classpathentry kind="src" output="classes/zip" path="jarchive-zip/src/main/java"/>
+	<classpathentry kind="src" output="classes/zip" path="jarchive-zip/src/main/resources"/>
+	<classpathentry kind="src" output="classes/zip" path="jarchive-zip/src/test/java"/>
+
+	<classpathentry kind="src" path="jarchive/src/test/java"/>
+	<classpathentry kind="src" path="jarchive/src/main/java"/>
+
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="classes/main"/>
+</classpath>
