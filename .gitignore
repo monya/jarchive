@@ -1,0 +1,10 @@
+/classes
+/jarchive/target
+/jarchive-rar/target
+/jarchive-tar/target
+/jarchive-tar-bzip/target
+/jarchive-tar-gzip/target
+/jarchive-tar-xz/target
+/jarchive-zip/target
+/jarchive-7z/target
+/dist/target
