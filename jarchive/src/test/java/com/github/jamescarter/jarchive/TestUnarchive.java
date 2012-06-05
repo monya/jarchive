@@ -52,8 +52,6 @@ public class TestUnarchive {
 		int entryCounter = 0;
 
 		while((entry = is.getNextEntry()) != null) {
-			++entryCounter;
-
 			if (entry.isArchive()) {
 				genericOutput(
 					JArchive.getJInputStream(entry, is)
@@ -61,6 +59,8 @@ public class TestUnarchive {
 
 				continue;
 			}
+
+			++entryCounter;
 
 			// Make sure we're seeing an expected file
 			assertTrue(entry.getName(), validFileList.contains(entry.getName()));
@@ -73,7 +73,7 @@ public class TestUnarchive {
 		}
 
 		// Ensure at least four entries were processed
-		assertTrue(entryCounter + " >= 4", entryCounter >= 4);
+		assertTrue(entryCounter + " != 4", entryCounter == 4);
 	}
 
 	private static String readFile(String path) throws IOException {

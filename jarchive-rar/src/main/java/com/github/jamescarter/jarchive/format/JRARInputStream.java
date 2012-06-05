@@ -1,10 +1,9 @@
 package com.github.jamescarter.jarchive.format;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
-
 import com.github.jamescarter.jarchive.FileExtensions;
 import com.github.jamescarter.jarchive.JFile;
 import com.github.jamescarter.jarchive.JInputStream;
@@ -15,16 +14,13 @@ import de.innosystec.unrar.rarfile.FileHeader;
 
 @FileExtensions(values = { "rar" })
 public class JRARInputStream extends JInputStream {
-	private PipedOutputStream pos = new PipedOutputStream();
 	private Archive arc;
 
 	public JRARInputStream(InputStream is) throws IOException {
 		super(null);
 
-		setInnerStream(new PipedInputStream(pos));
-
 		try {
-			arc = new Archive(getInnerStream());
+			arc = new Archive(is);
 		} catch (RarException e) {
 			throw new IOException(e);
 		}
@@ -38,13 +34,20 @@ public class JRARInputStream extends JInputStream {
 			return null;
 		}
 
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
 		try {
-			arc.extractFile(fh, pos);
+			arc.extractFile(fh, baos);
 		} catch (RarException e) {
 			throw new IOException(e);
 		}
 
-		JFile jentry = new JFile(fh.getFileNameString(), fh.getFullPackSize(), fh.getFullUnpackSize(), fh.isDirectory());
+		setInnerStream(new ByteArrayInputStream(baos.toByteArray()));
+
+		String name = fh.getFileNameString().replace("\\", "/");
+		name+= (fh.isDirectory() ? "/" : "");
+
+		JFile jentry = new JFile(name, fh.getFullPackSize(), fh.getFullUnpackSize(), fh.isDirectory());
 
 		return jentry;
 	}
