@@ -15,12 +15,21 @@
     <packaging>jar</packaging>
 
     <name>zip</name>
-   
+
     <dependencies>
         <dependency>
             <groupId>com.github.jamescarter</groupId>
             <artifactId>jarchive</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.jamescarter</groupId>
+            <artifactId>jarchive</artifactId>
+            <version>${project.parent.version}</version>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
 </project>

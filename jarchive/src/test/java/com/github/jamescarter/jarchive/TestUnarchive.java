@@ -8,21 +8,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import org.junit.Before;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TestUnarchive {
-	private static final String ARCHIVE_PATH = "jarchive/src/test/resources/archives/";
-	private static final String[] ARCHIVES = {
-		"test.tar.xz",
-		"test.tar.gz",
-		"test.tar.bz2",
-		"test.zip",
-		"test.7z",
-		"test.tar",
-		"test.rar",
-		"combined.7z"
-	};
+	private static final String ARCHIVE_PATH = "../jarchive/src/test/resources/archives/";
+
 	private static final ArrayList<String> validFileList = new ArrayList<String>();
 	private static String lipsum1Contents;
 	private static String lipsum2Contents;
@@ -38,13 +28,10 @@ public class TestUnarchive {
 		lipsum2Contents = readFile(ARCHIVE_PATH + "lipsum2.txt");
 	}
 
-	@Test
-	public void testUnarchive() throws FileNotFoundException, IOException {
-		for (String arc : ARCHIVES) {
-			genericOutput(
-				JArchive.getJInputStream(new File(ARCHIVE_PATH + arc))
-			);
-		}
+	public void testUnarchive(String archive) throws FileNotFoundException, IOException {
+		genericOutput(
+			JArchive.getJInputStream(new File(ARCHIVE_PATH + archive))
+		);
 	}
 
 	private void genericOutput(JInputStream is) throws IOException {
