@@ -8,19 +8,19 @@ import com.github.jamescarter.jarchive.FileExtensions;
 import com.github.jamescarter.jarchive.JFile;
 import com.github.jamescarter.jarchive.JInputStream;
 
-import de.innosystec.unrar.Archive;
-import de.innosystec.unrar.exception.RarException;
-import de.innosystec.unrar.rarfile.FileHeader;
+import com.github.junrar.Archive;
+import com.github.junrar.exception.RarException;
+import com.github.junrar.rarfile.FileHeader;
 
 @FileExtensions(values = { "rar" })
 public class JRARInputStream extends JInputStream {
 	private Archive arc;
 
-	public JRARInputStream(InputStream is) throws IOException {
-		super(null);
+	public JRARInputStream(JFile file, InputStream is) throws IOException {
+		super(file, null);
 
 		try {
-			arc = new Archive(is);
+			arc = new Archive(new StreamVolumeManager(file, is));
 		} catch (RarException e) {
 			throw new IOException(e);
 		}

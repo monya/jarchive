@@ -9,8 +9,8 @@ import com.github.jamescarter.jarchive.JFile;
 
 @FileExtensions(values = { "tar.gz" })
 public class JGZIPInputStream extends JTARInputStream {
-	public JGZIPInputStream(InputStream is) throws IOException {
-		super(new GZIPInputStream(is));
+	public JGZIPInputStream(JFile file, InputStream is) throws IOException {
+		super(file, new GZIPInputStream(is));
 	}
 
 	@Override

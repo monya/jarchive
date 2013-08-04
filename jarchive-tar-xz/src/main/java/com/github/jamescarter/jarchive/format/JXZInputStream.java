@@ -10,8 +10,8 @@ import com.github.jamescarter.jarchive.JFile;
 
 @FileExtensions(values = { "tar.xz" })
 public class JXZInputStream extends JTARInputStream {
-	public JXZInputStream(InputStream is) throws IOException {
-		super(new XZInputStream(is));
+	public JXZInputStream(JFile file, InputStream is) throws IOException {
+		super(file, new XZInputStream(is));
 	}
 
 	@Override

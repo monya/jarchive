@@ -13,7 +13,7 @@ public class JDIRInputStream extends JInputStream {
 	private int fileIndex = 0;
 
 	public JDIRInputStream(File file) {
-		super(null);
+		super(null, null);
 
 		populateFileList(file);
 	}

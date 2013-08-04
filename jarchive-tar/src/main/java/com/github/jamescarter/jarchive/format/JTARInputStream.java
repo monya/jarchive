@@ -11,8 +11,8 @@ import com.github.jamescarter.jarchive.JInputStream;
 
 @FileExtensions(values = { "tar" })
 public class JTARInputStream extends JInputStream {
-	public JTARInputStream(InputStream is) throws IOException {
-		super(new TarInputStream(is));
+	public JTARInputStream(JFile file, InputStream is) throws IOException {
+		super(file, new TarInputStream(is));
 	}
 
 	@Override

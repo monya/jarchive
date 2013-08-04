@@ -9,8 +9,8 @@ import com.github.jamescarter.jarchive.JFile;
 
 @FileExtensions(values = { "tar.bz", "tar.bz2" })
 public class JBZIPInputStream extends JTARInputStream {
-	public JBZIPInputStream(InputStream is) throws IOException {
-		super(new CBZip2InputStream(is));
+	public JBZIPInputStream(JFile file, InputStream is) throws IOException {
+		super(file, new CBZip2InputStream(is));
 	}
 
 	@Override

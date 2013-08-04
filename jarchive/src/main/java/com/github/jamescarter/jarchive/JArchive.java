@@ -23,7 +23,7 @@ public class JArchive {
 	public static JInputStream getJInputStream(JFile file, InputStream is) throws IOException {
 		if (file.isArchive() && file.getStreamClass() != null) {
 			try {
-				return (JInputStream) file.getStreamClass().getConstructor(InputStream.class).newInstance(is);
+				return (JInputStream) file.getStreamClass().getConstructor(JFile.class, InputStream.class).newInstance(file, is);
 			} catch (Exception e) {
 				throw new IOException(e);
 			}

@@ -7,17 +7,15 @@ import com.github.jamescarter.jarchive.JFile;
 import com.github.jamescarter.jarchive.JInputStream;
 
 public class JRAWInputStream extends JInputStream {
-	private JFile file;
-
 	public JRAWInputStream(JFile file, InputStream is) {
-		super(is);
-		this.file = file;
+		super(file, is);
 	}
 
 	@Override
 	public JFile getNextEntry() throws IOException {
-		JFile myJFile = file;
-		file = null;
+		JFile myJFile = getFile();
+
+		setFile(null);
 
 		return myJFile;
 	}

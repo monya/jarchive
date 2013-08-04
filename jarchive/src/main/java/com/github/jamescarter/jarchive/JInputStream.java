@@ -4,10 +4,20 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public abstract class JInputStream extends InputStream {
+	private JFile file;
 	private InputStream is;
 
-	public JInputStream(InputStream is) {
+	public JInputStream(JFile file, InputStream is) {
+		this.file = file;
 		this.is = is;
+	}
+	
+	public JFile getFile() {
+		return file;
+	}
+
+	public void setFile(JFile file) {
+		this.file = file;
 	}
 
 	public InputStream getInnerStream() {

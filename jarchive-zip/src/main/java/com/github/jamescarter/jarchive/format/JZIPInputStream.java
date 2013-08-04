@@ -11,8 +11,8 @@ import com.github.jamescarter.jarchive.JInputStream;
 
 @FileExtensions(values = { "zip", "jar", "war", "ear" })
 public class JZIPInputStream extends JInputStream {
-	public JZIPInputStream(InputStream is) throws IOException {
-		super(new ZipInputStream(is));
+	public JZIPInputStream(JFile file, InputStream is) throws IOException {
+		super(file, new ZipInputStream(is));
 	}
 
 	@Override

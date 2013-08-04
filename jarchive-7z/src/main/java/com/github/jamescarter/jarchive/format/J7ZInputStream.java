@@ -18,8 +18,8 @@ public class J7ZInputStream extends JInputStream {
 	private int numFiles = 0;
 	private int fileIndex = 0;
 
-	public J7ZInputStream(InputStream is) throws IOException {
-		super(null);
+	public J7ZInputStream(JFile file, InputStream is) throws IOException {
+		super(file, null);
 
 		SevenZIPIInStream sevenZip = new SevenZIPIInStream(is);
 
